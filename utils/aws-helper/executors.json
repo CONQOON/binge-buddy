@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "aws-s3-deploy": {
+      "implementation": "./src/executors/aws-s3-deploy/executor",
+      "schema": "./src/executors/aws-s3-deploy/schema.json",
+      "description": "aws-s3-deploy executor"
+    }
+  }
+}

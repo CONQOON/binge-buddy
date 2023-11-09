@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "title": "S3Deploy executor",
+  "description": "Deploys the contents of a directory to an S3 bucket",
+  "type": "object",
+  "properties": {
+  },
+  "required": []
+}

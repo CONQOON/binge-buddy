@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "title": "Terraform executor",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "command": {
+      "type": "string",
+      "description": "The terraform command to run"
+    },
+    "env": {
+      "type": "string",
+      "description": "The environment to run the terraform command in"
+    }
+  },
+  "required": []
+}

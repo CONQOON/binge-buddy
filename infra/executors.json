@@ -1,0 +1,14 @@
+{
+  "executors": {
+    "terraform": {
+      "implementation": "./src/executors/terraform/executor",
+      "schema": "./src/executors/terraform/schema.json",
+      "description": "terraform executor"
+    },
+    "config-generator": {
+      "implementation": "./src/executors/config-generator/executor",
+      "schema": "./src/executors/config-generator/schema.json",
+      "description": "config-generator executor"
+    }
+  }
+}

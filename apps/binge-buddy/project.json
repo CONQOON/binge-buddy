@@ -1,0 +1,81 @@
+{
+  "name": "binge-buddy",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/binge-buddy/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/binge-buddy"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "deploy" : {
+      "executor": "@bb/aws-helper:aws-s3-deploy"
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "binge-buddy:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "binge-buddy:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "binge-buddy:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nx/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "binge-buddy:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "binge-buddy:build:development"
+        },
+        "production": {
+          "buildTarget": "binge-buddy:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/apps/binge-buddy"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/binge-buddy/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "binge-buddy:build"
+      }
+    }
+  },
+  "tags": []
+}

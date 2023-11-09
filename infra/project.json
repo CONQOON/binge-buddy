@@ -1,0 +1,39 @@
+{
+  "name": "infra",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "infra/src",
+  "projectType": "library",
+  "targets": {
+    "apply": {
+      "executor": "@bb/infra:terraform",
+      "options": {
+        "command": "apply"
+      }
+    },
+    "config:generate": {
+      "executor": "@bb/infra:config-generator",
+      "options": {
+        "env": "develop"
+      }
+    },
+    "output": {
+      "executor": "@bb/infra:terraform",
+      "options": {
+        "command": "output"
+      }
+    },
+    "plan": {
+      "executor": "@bb/infra:terraform",
+      "options": {
+        "command": "plan"
+      }
+    },
+    "workspace": {
+      "executor": "@bb/infra:terraform",
+      "options": {
+        "command": "workspace"
+      }
+    }
+  },
+  "tags": []
+}

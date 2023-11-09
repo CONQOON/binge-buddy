@@ -88,7 +88,7 @@ export function SeriesDetails() {
                 {seasons.map((season: Season, index: number) => (
                   <Paper key={index} elevation={3} style={{marginTop: '16px', color: 'white'}}>
                     <Typography variant="h5" style={{padding: '8px'}}>
-                      Season {season.seasonnumber}
+                      Season #{season.seasonnumber + 1}
                     </Typography>
                     <TableContainer>
                       <Table style={{border: '2px solid black'}}>

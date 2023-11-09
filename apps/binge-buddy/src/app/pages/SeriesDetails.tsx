@@ -6,6 +6,9 @@ import {
   Chip,
   CircularProgress,
   Grid,
+  List,
+  ListItem,
+  ListItemText,
   Paper,
   Table,
   TableBody,
@@ -71,6 +74,14 @@ export function SeriesDetails() {
                   >
                     {series.overview}
                   </Typography>
+                  <Paper elevation={3} style={{marginTop: '16px', }}>
+                    <Typography variant="h5" style={{padding: '8px'}}>
+                      Actors
+                    </Typography>
+                    <Typography variant="body1" style={{padding: '8px'}}>
+                      {series.actors.join(', ')}
+                    </Typography>
+                  </Paper>
                 </Grid>
               </Grid>
               <div>

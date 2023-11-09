@@ -65,14 +65,20 @@ export const updateBingeListItem = createAsyncThunk<BingeListItem[], BingeListIt
 
     try {
       const bingeList = await fetchBingeListFromApi(dummyUserId);
+      let isInBingeList = false;
 
       const updatedBingeList = bingeList.map((item) => {
         if (item.seriesId === bingeListItem.seriesId) {
+          isInBingeList = true;
           return bingeListItem;
         } else {
           return item;
         }
       });
+
+      if (!isInBingeList) {
+        updatedBingeList.push(bingeListItem);
+      }
 
       await dispatch(updateBingeList(updatedBingeList) as unknown as AnyAction);
 

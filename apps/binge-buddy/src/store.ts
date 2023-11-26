@@ -1,12 +1,11 @@
 // store.ts
-import { Store } from 'redux';
 import { configureStore } from "@reduxjs/toolkit";
 import { seriesDetailsSlice } from "./app/series/seriesDetailsSlice";
 import { seriesGridSlice } from "./app/series/seriesGridSlice";
 import { globalSeriesSlice } from "./app/series/globalSeriesSlice";
 import { bingeListSlice } from "./app/bingeList/bingeListSlice";
 
-const store: Store = configureStore({
+const store = configureStore({
     reducer: {
       bingeList: bingeListSlice.reducer,
       globalSeries: globalSeriesSlice.reducer,

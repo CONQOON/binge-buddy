@@ -85,7 +85,6 @@ export const updateBingeListItem = createAsyncThunk<BingeListItem[], BingeListIt
       return updatedBingeList;
     } catch (error) {
       // Handle the error here if needed
-      throw error;
     }
   }
 );

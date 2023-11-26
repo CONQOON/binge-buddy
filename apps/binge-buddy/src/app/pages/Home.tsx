@@ -8,7 +8,6 @@ import { Container, styled } from "@mui/system";
 import { Layout } from "../layout";
 import { fetchGenres } from "../series/globalSeriesSlice";
 import { AppDispatch, RootState } from "../../store";
-import { AnyAction } from "@reduxjs/toolkit";
 import { fetchBingeList } from "../bingeList/bingeListSlice";
 
 export function Home() {
@@ -29,16 +28,16 @@ export function Home() {
   }, [searchTerm]);
 
   useEffect(() => {
-    dispatch(fetchSeries({searchTerm: debouncedSearchTerm, genre: selectedGenre}) as unknown as AnyAction);
-    dispatch(fetchGenres() as unknown as AnyAction);
+    dispatch(fetchSeries({searchTerm: debouncedSearchTerm, genre: selectedGenre}));
+    dispatch(fetchGenres());
   }, [dispatch, debouncedSearchTerm, selectedGenre]);
 
   useEffect(() => {
-    dispatch(fetchBingeList() as unknown as AnyAction);
+    dispatch(fetchBingeList());
   }, [dispatch]);
 
   const executeSearch = () => {
-    dispatch(fetchSeries({searchTerm: debouncedSearchTerm, genre: selectedGenre}) as unknown as AnyAction);
+    dispatch(fetchSeries({searchTerm: debouncedSearchTerm, genre: selectedGenre}));
   };
 
   return (

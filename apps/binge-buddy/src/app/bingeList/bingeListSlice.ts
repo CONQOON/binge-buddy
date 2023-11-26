@@ -1,5 +1,5 @@
-import { AnyAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { BingeListItem, BingeListPayload } from "@bb/api-interfaces";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { BingeListItem } from "@bb/api-interfaces";
 import { fetchBingeList as fetchBingeListFromApi, updateBingeList as updateBingeListWithApi } from "../../api";
 import { AppDispatch } from "../../store";
 
@@ -59,7 +59,7 @@ export const fetchBingeList = createAsyncThunk<BingeListItem[]>(
   }
 );
 
-export const updateBingeListItem = createAsyncThunk<BingeListItem[], BingeListItem, { dispatch: AppDispatch }>(
+export const updateBingeListItem = createAsyncThunk<BingeListItem[] | undefined, BingeListItem, { dispatch: AppDispatch }>(
   'bingeList/updateBingeListItem',
   async (bingeListItem, {dispatch}) => {
 
@@ -80,7 +80,7 @@ export const updateBingeListItem = createAsyncThunk<BingeListItem[], BingeListIt
         updatedBingeList.push(bingeListItem);
       }
 
-      await dispatch(updateBingeList(updatedBingeList) as unknown as AnyAction);
+      await dispatch(updateBingeList(updatedBingeList));
 
       return updatedBingeList;
     } catch (error) {
@@ -93,7 +93,7 @@ export const updateBingeListItem = createAsyncThunk<BingeListItem[], BingeListIt
 export const updateBingeList = createAsyncThunk<BingeListItem[], BingeListItem[]>(
   'bingeList/updateBingeList',
   async (bingeList) => {
-    return updateBingeListWithApi(dummyUserId, bingeList as BingeListPayload)
+    return updateBingeListWithApi(dummyUserId, bingeList)
   }
 );
 

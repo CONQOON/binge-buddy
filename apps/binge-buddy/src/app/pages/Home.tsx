@@ -78,7 +78,7 @@ export function Home() {
                   labelId="genre-label"
                   id="genre"
                   value={selectedGenre}
-                  onChange={(e) => setSelectedGenre(e.target.value as string)}
+                  onChange={(e) => setSelectedGenre(e.target.value)}
                   label="Select a genre"
                   style={{backgroundColor: '#333'}}
                 >

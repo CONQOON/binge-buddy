@@ -1,8 +1,7 @@
 import { MouseEvent } from "react";
 import { MUIStyledCommonProps, styled } from "@mui/system";
 import { Button, ButtonProps } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, AppState } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
 import { displayBingeList, hideBingeList } from "./bingeListSlice";
 
 export interface BingeListToggleButtonProps extends ButtonProps {
@@ -10,8 +9,8 @@ export interface BingeListToggleButtonProps extends ButtonProps {
 }
 
 export function BingeListDisplayButton(props: BingeListToggleButtonProps) {
-  const dispatch = useDispatch<AppDispatch>();
-  const doDisplayBingeList = useSelector((state: AppState) => state.bingeList.isDisplaying);
+  const dispatch = useAppDispatch();
+  const doDisplayBingeList = useAppSelector((state) => state.bingeList.isDisplaying);
   const {blaction = 'toggle'} = props;
 
   function handleClick(event: MouseEvent<HTMLButtonElement>) {

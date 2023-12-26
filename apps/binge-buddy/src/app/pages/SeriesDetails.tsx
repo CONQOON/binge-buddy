@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
-import { fetchSeriesDetails, SeriesDetailsState } from '../series/seriesDetailsSlice';
+import { useDispatch } from "react-redux";
+import { fetchSeriesDetails } from '../series/seriesDetailsSlice';
 import {
   Chip,
   CircularProgress,
@@ -17,14 +17,14 @@ import {
 } from '@mui/material';
 import { Container, styled } from '@mui/system';
 import { Episode } from "@bb/api-interfaces";
-import { AppDispatch, AppState } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
 import { Layout } from '../layout';
 import { AnyAction } from "@reduxjs/toolkit";
 
 export function SeriesDetails() {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   const {id} = useParams<{ id: string }>();
-  const {isLoading, series, episodes}: SeriesDetailsState = useSelector((state: AppState) => state.seriesDetails);
+  const {isLoading, series, episodes} = useAppSelector((state) => state.seriesDetails);
 
   useEffect(() => {
     if (id) {

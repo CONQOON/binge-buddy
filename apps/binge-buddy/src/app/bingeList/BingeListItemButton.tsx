@@ -2,8 +2,7 @@ import { MouseEvent } from "react";
 import { Button } from "@mui/material";
 import { BingeListItem } from "@bb/api-interfaces";
 import { PlaylistAdd, PlaylistRemove } from "@mui/icons-material";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, AppState } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
 import { updateBingeListItem } from "./bingeListSlice";
 import { styled } from "@mui/system";
 import { theme } from "../theme";
@@ -15,8 +14,8 @@ export interface BingeListItemButtonProps {
 }
 
 export function BingeListItemButton(props: BingeListItemButtonProps) {
-  const dispatch = useDispatch<AppDispatch>();
-  const bingeList = useSelector((state: AppState) => state.bingeList.list);
+  const dispatch = useAppDispatch();
+  const bingeList = useAppSelector((state) => state.bingeList.list);
   const {seriesId, seriesTitle} = props;
   const bingeListItem = getBingeListItemBySeriesId(seriesId, bingeList);
 

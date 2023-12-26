@@ -7,7 +7,7 @@ import {
 import { ThemeProvider } from "@mui/system";
 import { Home, SeriesDetails } from "./app/pages";
 import { theme } from "./app/theme";
-import store from "./store";
+import {store} from "./store";
 import { Provider } from "react-redux";
 
 const router = createBrowserRouter([

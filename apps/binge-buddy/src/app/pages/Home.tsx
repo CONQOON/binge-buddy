@@ -7,7 +7,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Container, styled } from "@mui/system";
 import { Layout } from "../layout";
 import { fetchGenres } from "../series/globalSeriesSlice";
-import { AppDispatch, RootState } from "../../store";
+import { AppDispatch, AppState } from "../../store";
 import { fetchBingeList } from "../bingeList/bingeListSlice";
 
 export function Home() {
@@ -15,8 +15,8 @@ export function Home() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [selectedGenre, setSelectedGenre] = useState<string>();
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState<string>("");
-  const seriesData = useSelector((state: RootState) => state.seriesGrid.data);
-  const genres = useSelector((state: RootState) => state.globalSeries.genres);
+  const seriesData = useSelector((state: AppState) => state.seriesGrid.data);
+  const genres = useSelector((state: AppState) => state.globalSeries.genres);
 
 
   useEffect(() => {

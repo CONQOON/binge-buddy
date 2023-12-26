@@ -5,7 +5,7 @@ import { seriesGridSlice } from "./app/series/seriesGridSlice";
 import { globalSeriesSlice } from "./app/series/globalSeriesSlice";
 import { bingeListSlice } from "./app/bingeList/bingeListSlice";
 
-const store = configureStore({
+export const store = configureStore({
     reducer: {
       bingeList: bingeListSlice.reducer,
       globalSeries: globalSeriesSlice.reducer,
@@ -15,6 +15,5 @@ const store = configureStore({
   }
 );
 
-export default store;
-export type RootState = ReturnType<typeof store.getState>;
+export type AppState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

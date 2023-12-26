@@ -20,14 +20,14 @@ import {
 } from '@mui/material';
 import { Container, styled } from '@mui/system';
 import { Episode } from "@bb/api-interfaces";
-import { AppDispatch, RootState } from "../../store";
+import { AppDispatch, AppState } from "../../store";
 import { Layout } from '../layout';
 import { AnyAction } from "@reduxjs/toolkit";
 
 export function SeriesDetails() {
   const dispatch = useDispatch<AppDispatch>();
   const {id} = useParams<{ id: string }>();
-  const {isLoading, series, episodes}: SeriesDetailsState = useSelector((state: RootState) => state.seriesDetails);
+  const {isLoading, series, episodes}: SeriesDetailsState = useSelector((state: AppState) => state.seriesDetails);
 
   useEffect(() => {
     if (id) {

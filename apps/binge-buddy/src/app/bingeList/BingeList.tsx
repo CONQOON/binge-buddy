@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
+import { AppDispatch, AppState } from "../../store";
 import { hideBingeList, updateBingeListItem } from "./bingeListSlice";
 import { styled } from "@mui/system";
 import {
@@ -19,8 +19,8 @@ import { AnyAction } from "@reduxjs/toolkit";
 
 export function BingeList() {
   const dispatch = useDispatch<AppDispatch>();
-  const isDisplayingBingeList = useSelector((state: RootState) => state.bingeList.isDisplaying);
-  const bingeList = useSelector((state: RootState) =>
+  const isDisplayingBingeList = useSelector((state: AppState) => state.bingeList.isDisplaying);
+  const bingeList = useSelector((state: AppState) =>
     state.bingeList.list
       .filter((item: BingeListItem) => item.onWatchList === true)
       .sort((a: BingeListItem, b: BingeListItem) => (a.updatedAt ?? 0) - (b.updatedAt ?? 0))

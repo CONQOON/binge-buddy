@@ -45,75 +45,73 @@ export function SeriesDetails() {
             <CircularProgress size={80} color="inherit"/>
           </LoadingContainer>
         ) : (
-          <>
-            <Container>
-              <Grid container spacing={4}>
-                <Grid item xs={6} sm={4}>
-                  <StyledPoster src={series.poster} alt={series.seriesname}/>
-                </Grid>
-                <Grid item xs={6} sm={8}>
-                  <Typography variant="h4" style={{color: 'white'}}>
-                    {series.seriesname}
-                  </Typography>
-                  <Typography variant="body1" style={{color: 'white'}}>
-                    Rating: {series.rating} ({series.ratingcount})
-                  </Typography>
-                  <GenrePills>
-                    {series.genre.map((genre, index) => (
-                      <Chip
-                        key={index}
-                        label={genre}
-                        variant="outlined"
-                        color="primary"
-                      />
-                    ))}
-                  </GenrePills>
-                  <Typography
-                    variant="body1"
-                    style={{color: 'white', marginTop: '16px'}}
-                  >
-                    {series.overview}
-                  </Typography>
-                  <Paper elevation={3} style={{marginTop: '16px', }}>
-                    <Typography variant="h5" style={{padding: '8px'}}>
-                      Actors
-                    </Typography>
-                    <Typography variant="body1" style={{padding: '8px'}}>
-                      {series.actors.join(', ')}
-                    </Typography>
-                  </Paper>
-                </Grid>
+          <Container>
+            <Grid container spacing={4}>
+              <Grid item xs={6} sm={4}>
+                <StyledPoster src={series.poster} alt={series.seriesname}/>
               </Grid>
-              <div>
-                {seasons.map((season: Season, index: number) => (
-                  <Paper key={index} elevation={3} style={{marginTop: '16px', color: 'white'}}>
-                    <Typography variant="h5" style={{padding: '8px'}}>
-                      Season #{season.seasonnumber + 1}
-                    </Typography>
-                    <TableContainer>
-                      <Table style={{border: '2px solid black'}}>
-                        <TableHead>
-                          <TableRow>
-                            <TableCell style={{border: '2px solid black'}}>Episode Number</TableCell>
-                            <TableCell style={{border: '2px solid black'}}>Episode Name</TableCell>
+              <Grid item xs={6} sm={8}>
+                <Typography variant="h4" style={{color: 'white'}}>
+                  {series.seriesname}
+                </Typography>
+                <Typography variant="body1" style={{color: 'white'}}>
+                  Rating: {series.rating} ({series.ratingcount})
+                </Typography>
+                <GenrePills>
+                  {series.genre.map((genre, index) => (
+                    <Chip
+                      key={index}
+                      label={genre}
+                      variant="outlined"
+                      color="primary"
+                    />
+                  ))}
+                </GenrePills>
+                <Typography
+                  variant="body1"
+                  style={{color: 'white', marginTop: '16px'}}
+                >
+                  {series.overview}
+                </Typography>
+                <Paper elevation={3} style={{marginTop: '16px', }}>
+                  <Typography variant="h5" style={{padding: '8px'}}>
+                    Actors
+                  </Typography>
+                  <Typography variant="body1" style={{padding: '8px'}}>
+                    {series.actors.join(', ')}
+                  </Typography>
+                </Paper>
+              </Grid>
+            </Grid>
+            <div>
+              {seasons.map((season: Season, index: number) => (
+                <Paper key={index} elevation={3} style={{marginTop: '16px', color: 'white'}}>
+                  <Typography variant="h5" style={{padding: '8px'}}>
+                    Season #{season.seasonnumber + 1}
+                  </Typography>
+                  <TableContainer>
+                    <Table style={{border: '2px solid black'}}>
+                      <TableHead>
+                        <TableRow>
+                          <TableCell style={{border: '2px solid black'}}>Episode Number</TableCell>
+                          <TableCell style={{border: '2px solid black'}}>Episode Name</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {season.episodes.map((episode: Episode, index: number) => (
+                          <TableRow key={index}>
+                            <TableCell style={{border: '2px solid black'}}>{`#${episode.episodenumber}`}</TableCell>
+                            <TableCell
+                              style={{color: 'white', border: '2px solid black'}}>{episode.episodename}</TableCell>
                           </TableRow>
-                        </TableHead>
-                        <TableBody>
-                          {season.episodes.map((episode: Episode, index: number) => (
-                            <TableRow key={index}>
-                              <TableCell style={{border: '2px solid black'}}>{`#${episode.episodenumber}`}</TableCell>
-                              <TableCell
-                                style={{color: 'white', border: '2px solid black'}}>{episode.episodename}</TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
-                    </TableContainer>
-                  </Paper>
-                ))}
-              </div>
-            </Container>
-          </>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </Paper>
+              ))}
+            </div>
+          </Container>
         )}
       </div>
     </Layout>

@@ -33,7 +33,7 @@ export function SeriesDetails() {
     if (id) {
       dispatch(fetchSeriesDetails(Number.parseInt(id)) as unknown as AnyAction);
     }
-  }, [id]);
+  }, [dispatch, id]);
 
   const seasons = episodes ? groupEpisodesToSeason(episodes) : [];
 

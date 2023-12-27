@@ -7,8 +7,7 @@ import {
 import { ThemeProvider } from "@mui/system";
 import { Home, SeriesDetails } from "./app/pages";
 import { theme } from "./app/theme";
-import store from "./store";
-import { Provider } from "react-redux";
+import { StoreProvider} from "./store";
 
 const router = createBrowserRouter([
   {
@@ -24,9 +23,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <Provider store={store}>
+      <StoreProvider>
         <RouterProvider router={router}/>
-      </Provider>
+      </StoreProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

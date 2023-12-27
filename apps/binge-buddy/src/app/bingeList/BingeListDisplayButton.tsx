@@ -1,24 +1,21 @@
 import { MouseEvent } from "react";
 import { MUIStyledCommonProps, styled } from "@mui/system";
 import { Button, ButtonProps } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
-import { displayBingeList, hideBingeList } from "./bingeListSlice";
+import { useBingeListStore } from "../../store";
 
 export interface BingeListToggleButtonProps extends ButtonProps {
   blaction?: 'open' | 'close' | 'toggle';
 }
 
 export function BingeListDisplayButton(props: BingeListToggleButtonProps) {
-  const dispatch = useDispatch<AppDispatch>();
-  const doDisplayBingeList = useSelector((state: RootState) => state.bingeList.isDisplaying);
+  const { values: { isDisplaying: doDisplayBingeList }, hideBingeList, displayBingeList } = useBingeListStore();
   const {blaction = 'toggle'} = props;
 
   function handleClick(event: MouseEvent<HTMLButtonElement>) {
     if (blaction !== 'open' && doDisplayBingeList) {
-      dispatch(hideBingeList());
+      hideBingeList();
     } else if (blaction !== 'close' && !doDisplayBingeList)
-      dispatch(displayBingeList());
+      displayBingeList();
   }
 
   return (<StyledBingeListButton {...props as MUIStyledCommonProps} onClick={handleClick}/>);

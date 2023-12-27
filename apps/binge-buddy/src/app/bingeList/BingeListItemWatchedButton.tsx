@@ -2,8 +2,7 @@ import { MouseEvent } from "react";
 import { Button } from "@mui/material";
 import { BingeListItem } from "@bb/api-interfaces";
 import { RadioButtonUnchecked, TaskAlt } from "@mui/icons-material";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
 import { updateBingeListItem } from "./bingeListSlice";
 import { AnyAction } from "@reduxjs/toolkit";
 
@@ -13,8 +12,8 @@ export interface BingeListItemWatchedButtonProps {
 }
 
 export function BingeListItemWatchedButton(props: BingeListItemWatchedButtonProps) {
-  const dispatch = useDispatch<AppDispatch>();
-  const bingeList = useSelector((state: RootState) => state.bingeList.list);
+  const dispatch = useAppDispatch();
+  const bingeList = useAppSelector((state) => state.bingeList.list);
   const {seriesId, seriesTitle} = props;
   const bingeListItem = getBingeListItemBySeriesId(seriesId, bingeList);
 

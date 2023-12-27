@@ -8,7 +8,7 @@ export interface BingeListToggleButtonProps extends ButtonProps {
 }
 
 export function BingeListDisplayButton(props: BingeListToggleButtonProps) {
-  const { bingeList: {isDisplaying: doDisplayBingeList}, hideBingeList, displayBingeList } = useBingeListStore();
+  const { values: { isDisplaying: doDisplayBingeList }, hideBingeList, displayBingeList } = useBingeListStore();
   const {blaction = 'toggle'} = props;
 
   function handleClick(event: MouseEvent<HTMLButtonElement>) {

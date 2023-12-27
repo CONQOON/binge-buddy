@@ -38,13 +38,13 @@ export const useAppDispatch = useDispatch<AppDispatch>;
  * Example of a convenience Store
  */
 export function useBingeListStore() {
-  const bingeList  = useAppSelector((state) => state.bingeList);
+  const values  = useAppSelector((state) => state.bingeList);
   const dispatch = useAppDispatch();
   return useMemo(() => ({
-    bingeList,
+    values,
     displayBingeList: () => dispatch(displayBingeList()),
     hideBingeList: () => dispatch(hideBingeList()),
-  }), [bingeList, dispatch]);
+  }), [values, dispatch]);
 }
 
 /**

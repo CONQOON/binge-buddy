@@ -22,10 +22,10 @@ export const bingeListSlice = createSlice({
   initialState,
   name: 'bingeList',
   reducers: {
-    displayBingeList: (state: BingeListState) => {
+    displayBingeList: (state) => {
       state.isDisplaying = true;
     },
-    hideBingeList: (state: BingeListState) => {
+    hideBingeList: (state) => {
       state.isDisplaying = false;
     }
   },

@@ -10,6 +10,7 @@ import {
   useDispatch,
   useSelector,
 } from 'react-redux';
+import {useMemo} from 'react';
 
 const store = configureStore({
   reducer: {
@@ -39,11 +40,11 @@ export const useAppDispatch = useDispatch<AppDispatch>;
 export function useBingeListStore() {
   const bingeList  = useAppSelector((state) => state.bingeList);
   const dispatch = useAppDispatch();
-  return {
+  return useMemo(() => ({
     bingeList,
     displayBingeList: () => dispatch(displayBingeList()),
     hideBingeList: () => dispatch(hideBingeList()),
-  };
+  }), [bingeList, dispatch]);
 }
 
 /**
